@@ -64,7 +64,7 @@ function DrawerNavigation() {
         <Drawer.Screen name="Trash" component={Component} />
         <Drawer.Screen name="Spam" component={Component} />
       </Drawer.Navigator> */}
-      <Drawer.Navigator initialRouteName="Home"
+      <Drawer.Navigator initialRouteName="Setting"
         screenOptions={{
           drawerStyle: {
             backgroundColor: '#c6cbef',
@@ -72,7 +72,7 @@ function DrawerNavigation() {
           },
         }}
     >
-        <Drawer.Screen name="Home" component={HomeScreen}  options={{presentation: 'transparentModal', cardOverlayEnabled: true}}/>
+        <Drawer.Screen name="Home" component={UserScreen}  options={{presentation: 'transparentModal', cardOverlayEnabled: true}}/>
         <Drawer.Screen name="Notifications" component={SettingScreen}  options={{presentation: 'transparentModal', cardOverlayEnabled: true}}/>
       </Drawer.Navigator>
     </View>

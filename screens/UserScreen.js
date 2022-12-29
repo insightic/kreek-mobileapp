@@ -1,14 +1,22 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import ProgressBar from '../components/ProgressBar.js'
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default UserScreen = () => {
 
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, {backgroundColor: colors.background}]}>
+    <LinearGradient
+	colors={['#80808050','#1A111050', '#454545']}
+	start={{x: 0, y: 0.5}}
+	end={{x: 1, y: 1}}
+	style={{height:'100%'}}
+  >
+    <ScrollView>
+    <View style={[styles.container]}>
         <View style={styles.userTop}>
             <View style={styles.userTopLeft}>
                 <Image
@@ -73,7 +81,10 @@ export default UserScreen = () => {
                 </TouchableOpacity>
             </View>
         </View>
+
     </View>
+    </ScrollView>
+    </LinearGradient>
   );
 };
 
@@ -83,6 +94,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       paddingTop: 10,
+      paddingBottom: 50,
+      zIndex:10
     },
     profilePic: {
         borderRadius: 30,

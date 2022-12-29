@@ -10,6 +10,12 @@ export const lightColor = {
     borderBottom: '#00000080',
     border: 'blue',
     notification: 'blue',
+
+    background_contrast: '#222222',
+    text_contrast: '#ffffff',
+    textFade_contrast: '#ffffff60',
+    underline_contrast: '#FFFF00',
+    borderBottom_contrast: '#ffffff80'
 };
 
 export const darkColor = {
@@ -22,6 +28,12 @@ export const darkColor = {
     borderBottom: '#ffffff80',
     border: 'blue',
     notification: 'blue',
+
+    background_contrast: '#F5F5F5',
+    text_contrast: '#000000',
+    textFade_contrast: '#00000060',
+    underline_contrast: '#FF6F00',
+    borderBottom_contrast: '#00000080',
 };
 
 export const lightTheme = {

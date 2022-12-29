@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
-import { StyleSheet, Text, View, TextInput, Button, Dimensions, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { StyleSheet, StatusBar, TouchableOpacity, Animated, Text, View, TextInput, Button, Dimensions, Image } from "react-native";
+import { Ionicons, EvilIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons';
 import { Item, HeaderButton, HeaderButtons } from "react-navigation-header-buttons";
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
@@ -20,55 +20,125 @@ const Stack = createStackNavigator();
 
 const HomeScreen = (props) => {
     
-    const [index, setIndex] = React.useState(2);
+    const [index, setIndex] = React.useState(0);
+
     const [routes] = React.useState([
       { key: 'explore', title: 'Explore' },
       { key: 'myNFTs', title: 'My NFTs' },
       { key: 'news', title: 'News' },
+      { key: 'user', title: 'User' },
     ]);
+    const [sounds, setSounds] = React.useState(Array(routes.length).fill(0))
+    // const renderScene = SceneMap({
+    //     explore: ExploreScreen,
+    //     myNFTs: MyNFTsScreen,
+    //     news: NewsScreen,
+    //     user: UserScreen
+    //   });
 
-    const renderScene = SceneMap({
-        explore: ExploreScreen,
-        myNFTs: MyNFTsScreen,
-        news: NewsScreen
-      });
-
+      const renderScene = ({ route }) => {
+        switch (route.key) {
+          case 'explore':
+            return <ExploreScreen enableSound={sounds[0]} />;
+          case 'myNFTs':
+            return <MyNFTsScreen enableSound={sounds[1]}/>;
+          case 'news':
+            return <NewsScreen enableSound={sounds[2]}/>;
+          case 'user':
+            return <UserScreen enableSound={sounds[3]}/>;
+          default:
+            return null;
+        }
+      };
     const { colors } = useTheme();
+    const IconList = ['coins', 'award', 'newspaper','user-circle']
+    
+    const renderTabBar = (props) => {
+      const inputRange = props.navigationState.routes.map((x, i) => i);
+    
+      return (
+        <View style={[styles.tabBar2, {backgroundColor: colors.background_contrast}]}>
+          {props.navigationState.routes.map((route, i) => {
+            const opacity = props.position.interpolate({
+              inputRange,
+              outputRange: inputRange.map((inputIndex) =>
+                inputIndex === i ? 1 : 0.5
+              ),
+            });
+
+            const color = i === index ? colors.text_contrast : colors.textFade_contrast
+    
+            return (
+              <TouchableOpacity
+                style={styles.tabItem}
+                // onPress={() => {setIndex(i); setSounds(Array(routes.length).fill(0).map((elem, index)=> index==i));}}>
+                onPress={() => {setIndex(i)}}>
+                <FontAwesome5 name={IconList[i]} size={24} color={color}/>
+                <Animated.Text style={[styles.tabBarText,{ opacity, color:colors.text_contrast }]}>{route.title}</Animated.Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      );
+    };
+
+    const LazyPlaceholder = ({ route }) => (
+      <View style={styles.scene}>
+        <Text>Loading {route.title}…</Text>
+      </View>
+    );
+    
+    const renderLazyPlaceholder = ({ route }) => <LazyPlaceholder route={route} />;
+
 
     return (
           <TabView
+              lazy={true}
+              renderLazyPlaceholder={renderLazyPlaceholder}
              navigationState={{ index, routes }}
              renderScene={renderScene}
              onIndexChange={setIndex}
             initialLayout={{ width: Dimensions.get('window').width }}
             style={[styles.container, {color: colors.text}]}
-            
-            renderTabBar={props => <TabBar {...props} 
-              style={{backgroundColor: colors.background}}
-              activeColor={colors.text}
-              inactiveColor={colors.textFade}
-              indicatorStyle={{backgroundColor: colors.underline}} 
-              />}
+            tabBarPosition='bottom'
+            swipeEnabled={false}
+            // renderTabBar={props => <TabBar {...props} 
+            //   style={[styles.tabBar, {backgroundColor: colors.background_contrast}]}
+            //   activeColor={colors.text_contrast}
+            //   inactiveColor={colors.textFade_contrast}
+            //   indicatorStyle={{backgroundColor: 'transparent'}}//{{backgroundColor: colors.underline}} 
+            //   ><Text> HI</Text></TabBar>}
+            renderTabBar={renderTabBar}
           />
 
     );
 };
 
+
+
 const styles = StyleSheet.create({
-   tinyLogo: {
-      width: 50,
-      height: 50,
-    },
-   logo: {
-      width: 100,
-      height: 80,
-      marginLeft: 20,
-      resizeMode: 'contain',
+    tabBar: {
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
     },
     container: {
-        width: '100%',
-        flex:1,
-    }
+      flex: 1,
+    },
+    tabBar2: {
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
+      flexDirection: 'row',
+      position:'absolute',
+      bottom:0
+    },
+    tabItem: {
+      flex: 1,
+      alignItems: 'center',
+      padding: 5,
+    },
+    tabBarText: {
+      fontSize:10,
+    },
 });
 
 export default HomeScreen;

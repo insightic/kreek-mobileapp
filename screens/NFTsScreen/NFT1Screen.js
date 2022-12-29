@@ -1,8 +1,11 @@
 import React,{useState} from "react";
-import { StyleSheet,Text, View, Image, Platform, StatusBar, ScrollView, TouchableOpacity} from "react-native";
+import { StyleSheet,Text, View, Image, Platform, StatusBar, ScrollView} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Animated, { Keyframe, Easing, color } from 'react-native-reanimated';
 import { useTheme } from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import {TouchableOpacity} from 'react-native-gesture-handler'
 
 const enteringAnimation = new Keyframe({
     0: {
@@ -97,11 +100,22 @@ const NFT1Screen = () => {
 		)
 	}
 
-	
+	const navigation = useNavigation();
 
 return (
+	<LinearGradient
+	colors={['#80808050','#1A111050', '#454545']}
+	start={{x: 0, y: 0.5}}
+	end={{x: 1, y: 1}}
+	style={{height:'100%'}}
+  >
 	<ScrollView>
-    <View style={[styles.container, {backgroundColor: colors.backgroundColor}]}>
+	<View style={styles.container}>
+    {/* <View style={[styles.container, {backgroundColor: colors.background}]}> */}
+		<View style={{height:20}} />
+		<TouchableOpacity containerStyle={styles.backButton} onPress={() => navigation.goBack()}>
+			<Ionicons name="chevron-back-outline" style={{color:colors.text}} size={40}/>
+		</TouchableOpacity>
         <Image
         style={styles.poster}
         source={require('../../assets/card1.png')}
@@ -130,9 +144,11 @@ return (
 		{section == 2 && <Section2 />}
 		{section == 3 && <Section3 />}
 
-        
+        <View style={{flex:3}} />
     </View>
+
 	</ScrollView>
+	</LinearGradient>
 );
 };
 
@@ -142,6 +158,13 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		height:'100%'
+	},
+	backButton: {
+		position: 'absolute',
+		top: 30,
+		left: 15,
+		zIndex:1
 	},
 	poster: {
 		height: 250,

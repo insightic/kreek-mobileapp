@@ -15,13 +15,19 @@ import {useColorScheme} from 'react-native'
 import HomeScreen from "./screens/HomeScreen.js";
 import UserScreen from "./screens/UserScreen.js";
 import SettingScreen from "./screens/SettingScreen.js";
-import ImageDetailsScreen from "./screens/ImageDetailsScreen.js";
 import NewsScreen from "./screens/NewsScreen.js";
 
 import NFT1Screen from "./screens/NFTsScreen/NFT1Screen.js";
 import NFT2Screen from "./screens/NFTsScreen/NFT2Screen.js";
 import NFT3Screen from "./screens/NFTsScreen/NFT3Screen.js";
 import { ZoomIn } from 'react-native-reanimated';
+
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
+
 
 const Stack = createStackNavigator();
 
@@ -111,7 +117,8 @@ export default function App() {
       <Stack.Navigator screenOptions={{
       animationEnabled:true,
       headerStyle: {
-        backgroundColor: isDark ? darkColor.background : lightColor.background,
+        //backgroundColor: isDark ? darkColor.background : lightColor.background,
+        backgroundColor: 'transparent',
       },
       headerTitleStyle: {
         fontWeight: "bold",
@@ -134,30 +141,29 @@ export default function App() {
             headerRight: () => (
               <HeaderButtons HeaderButtonComponent={HeaderButtonComponent}>
                 <Switch value = {isDark} onValueChange = {val => setIsDark(val)} />
-                  <Item
+                  {/* <Item
                   title="Setting"
                   iconName="reorder-three-sharp"
                   onPress={openPanel}
                   color = {isDark ? darkColor.text : lightColor.text}
                   //onPress={() => props.navigation.navigate("Image")}
-                  />
+                  /> */}
               </HeaderButtons>
               ),
           })}/>
         <Stack.Screen name="User" component={UserScreen} />
-        <Stack.Screen name="Image" component={ImageDetailsScreen} options={{headerShown:false}}/>
-        <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false,  ...TransitionPresets.SlideFromRightIOS}}/>
-        <Stack.Screen name="NFT2" component={NFT2Screen} options={{headerShown:false, ...MyTransition}}/>
+        <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false,  ...TransitionPresets.ModalSlideFromBottomIOS}}/>
+        <Stack.Screen name="NFT2" component={NFT2Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
         <Stack.Screen name="NFT3" component={NFT3Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
 
       </Stack.Navigator>
 
       <SwipeablePanel {...panelProps} isActive={isPanelActive}>
         <UserScreen />
-
       </SwipeablePanel>
-      
+
     </NavigationContainer>
+
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style="auto" />
