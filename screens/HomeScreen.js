@@ -2,7 +2,6 @@ import React, { useState, useEffect} from "react";
 import { StyleSheet, StatusBar, TouchableOpacity, Animated, Text, View, TextInput, Button, Dimensions, Image } from "react-native";
 import { Ionicons, EvilIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons';
-import { Item, HeaderButton, HeaderButtons } from "react-navigation-header-buttons";
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import MyNFTsScreen from "./MyNFTsScreen.js";
 import NewsScreen from "./NewsScreen.js";
@@ -125,11 +124,12 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     tabBar2: {
-      borderTopLeftRadius: 30,
-      borderTopRightRadius: 30,
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20,
       flexDirection: 'row',
       position:'absolute',
-      bottom:0
+      bottom:0,
+      width: '100%'
     },
     tabItem: {
       flex: 1,

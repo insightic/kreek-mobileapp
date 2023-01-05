@@ -3,8 +3,7 @@ import { StyleSheet, Platform, StatusBar, Text, View, Switch, Image, Dimensions,
 import React, {useState, useEffect} from "react";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator, TransitionSpecs, HeaderStyleInterpolators, TransitionPresets } from "@react-navigation/stack";
-import { Ionicons } from "@expo/vector-icons";
-import { Item, HeaderButton, HeaderButtons } from "react-navigation-header-buttons";
+import { Ionicons, Item } from "@expo/vector-icons";
 import { SwipeablePanel } from 'rn-swipeable-panel';
 import { DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {ThemeProvider} from './theme/ThemeProvider.js'
@@ -20,6 +19,7 @@ import NewsScreen from "./screens/NewsScreen.js";
 import NFT1Screen from "./screens/NFTsScreen/NFT1Screen.js";
 import NFT2Screen from "./screens/NFTsScreen/NFT2Screen.js";
 import NFT3Screen from "./screens/NFTsScreen/NFT3Screen.js";
+import Temp from "./components/NFTCardCover.js"
 import { ZoomIn } from 'react-native-reanimated';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -28,18 +28,10 @@ import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
 
+// import Logo from './assets/kreek.svg'
 
 const Stack = createStackNavigator();
 
-const HeaderButtonComponent = (props) => {
-    
-  return (
-  <HeaderButton
-      IconComponent={Ionicons}
-      iconSize={23}
-      {...props}
-  />
-)};
 
 export default function App() {
   const [panelProps, setPanelProps] = useState({
@@ -130,31 +122,31 @@ export default function App() {
         options={(props) => ({
           headerTitle: null,
           headerLeft: () => (
-            <View style={{flexDirection:'row'}} >
-            <Image
-             style={{width: 100, height: 50 , marginLeft:15}}
+            <View style={{flexDirection:'row', marginLeft:20}} >
+            {/* <Image
+             style={{width: 100, height: 50 , marginLeft:15, fill:'#fff'}}
              //source={{uri:"https://source.unsplash.com/user/c_v_r/100x100"}}
              source={require('./assets/brand.png')}
-            />
+            /> */}
+            {/* <Logo width={50} fill={isDark? 'white': 'black'}/> */}
+
             </View>
             ),
             headerRight: () => (
-              <HeaderButtons HeaderButtonComponent={HeaderButtonComponent}>
                 <Switch value = {isDark} onValueChange = {val => setIsDark(val)} />
-                  {/* <Item
-                  title="Setting"
-                  iconName="reorder-three-sharp"
-                  onPress={openPanel}
-                  color = {isDark ? darkColor.text : lightColor.text}
-                  //onPress={() => props.navigation.navigate("Image")}
-                  /> */}
-              </HeaderButtons>
+                // <Item
+                // title="Setting"
+                // iconName="reorder-three-sharp"
+                // color = {isDark ? darkColor.text : lightColor.text}
+                // onPress={() => props.navigation.navigate("Temp")}
+                // />
               ),
           })}/>
         <Stack.Screen name="User" component={UserScreen} />
         <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false,  ...TransitionPresets.ModalSlideFromBottomIOS}}/>
         <Stack.Screen name="NFT2" component={NFT2Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
         <Stack.Screen name="NFT3" component={NFT3Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
+        {/* <Stack.Screen name="Temp" component={Temp} /> */}
 
       </Stack.Navigator>
 
@@ -185,5 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#222',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%',
+    maxWidth: 600
   },
 });

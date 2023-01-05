@@ -10,6 +10,8 @@ export const lightColor = {
     borderBottom: '#00000080',
     border: 'blue',
     notification: 'blue',
+    main1: 'EA771E',
+    main2: '2293A3',
 
     background_contrast: '#222222',
     text_contrast: '#ffffff',
@@ -28,6 +30,8 @@ export const darkColor = {
     borderBottom: '#ffffff80',
     border: 'blue',
     notification: 'blue',
+    main1: 'EA771E',
+    main2: '2293A3',
 
     background_contrast: '#F5F5F5',
     text_contrast: '#000000',

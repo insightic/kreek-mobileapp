@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import { TouchableOpacity, Button, Easing, StyleSheet, View, Text, Image } from 'react-native';
-import { Ionicons, EvilIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { Ionicons, EvilIcons, MaterialIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import Carousel from 'react-native-reanimated-carousel';
 import Animated, {
     Extrapolate,
@@ -43,7 +43,7 @@ function CarouselParallax(props) {
         : ({
               vertical: false,
               width: 200,
-              height: 300,
+              height: 310,
           });
 
           const enableSound = props.enableSound
@@ -132,14 +132,15 @@ function CarouselParallax(props) {
                 data={itemList}
                 renderItem={({ item }) => (
                 <View style={styles.card_container}>
-                    
+                <View style={styles.card_cover}>
                     <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.to)}>
                         <Image style={styles.card} source={item.uri} />
                     </TouchableOpacity>
+                </View>
                 </View>)}
             />
 
-            <InfoBlock index={currIdx} days={itemList[currIdx]['dayInvested']} token={itemList[currIdx]['tokenAdded']} />
+            <InfoBlock index={currIdx} days={itemList[currIdx]['dayInvested']} totalToken={itemList[currIdx]['totalToken']} tokenSpeed={itemList[currIdx]['tokenSpeed']} numUsers={itemList[currIdx]['numUsers']}/>
         </View>
     );
 }
@@ -200,7 +201,7 @@ const enteringAnimation = new Keyframe({
 
 const InfoBlock = (props) => {
     const { colors } = useTheme();
-    const {index, days, token} = props
+    const {index, days, totalToken,  tokenSpeed, numUsers} = props
     const animValue = new Animated.Value(1)
     const opac = animValue.interpolate({
         inputRange: [index - 1, index, index + 1],
@@ -212,18 +213,27 @@ const InfoBlock = (props) => {
         <Animated.View style={[infoStyles.stat, {opacity:animValue}]}>
             {days && 
                 <View style={infoStyles.row}> 
-                    <FontAwesome style={infoStyles.icon} name="calendar" size={24} color={colors.text} />
+                    <MaterialIcons style={infoStyles.icon} name="date-range" size={30} color={colors.text} />
                     <Text style={{color: colors.text, fontSize:15}}>Days Holding: </Text>   
                     <Text style={{color: colors.text, fontSize:15}}>{days}</Text>
                 </View>
             }
-            {token &&
+            {totalToken &&
                 <View style={infoStyles.row}>
-                    <FontAwesome style={infoStyles.icon} name="bitcoin" size={30} color={colors.text} />
+                    <FontAwesome style={infoStyles.icon} name="money" size={30} color={colors.text} />
                     <Text style={{color: colors.text, fontSize:15}}>Token: </Text>   
-                    <Text style={{color: colors.text, fontSize:15}}>+ {token} Kreek Tokens</Text>
+                    <Text style={{color: colors.text, fontSize:15}}> {totalToken} Drip Tokens (+ {tokenSpeed}/day)</Text>
                 </View>
             }
+            {numUsers &&
+                <View style={infoStyles.row}>
+                    <FontAwesome style={infoStyles.icon} name="users" size={30} color={colors.text} />
+                    <Text style={{color: colors.text, fontSize:15}}>Pool: </Text>   
+                    <Text style={{color: colors.text, fontSize:15}}> {numUsers} are holding</Text>
+                </View>
+            }
+
+
         </Animated.View>
     )
 }
@@ -242,10 +252,23 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
     }, 
+    card_cover: {
+        flex: 1,  
+        backgroundColor: 'grey',
+        alignItems:'center',
+        justifyContent: 'center',
+        padding:10,
+        borderRadius: 20,
+        transform: [
+            {rotateX: '15deg'},
+            {rotateY: '15deg'},
+            {rotateZ: '0deg'}
+        ]
+    },  
     card: {
         flex: 1,
-        height: 400,
-        width: '100%',
+        height: 300,
+        width: 200,
         resizeMode: "contain",
         borderRadius: 20,
     },
@@ -275,7 +298,7 @@ const infoStyles = StyleSheet.create({
     stat: {
         justifyContent:"center",
         flexDirection:"column",
-        width:'25%',
+        width:'30%',
         marginVertical: 20,
     },
     row: {

@@ -6,6 +6,7 @@ import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler'
+import NFTCardCover from '../../components/NFTCardCover.js'
 
 const enteringAnimation = new Keyframe({
     0: {
@@ -23,24 +24,19 @@ const NFT1Screen = () => {
 		return (
 			<Animated.View entering={enteringAnimation} style={styles.content}>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 1 Title 1</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 1</Text>
+					<Text style={[styles.left, {color:colors.text}]}>DCA ETH Price</Text>
+					<Text style={[styles.right, {color:colors.text}]}>1102 USD</Text>
 				</View>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 1 Title 2</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 2</Text>
+					<Text style={[styles.left, {color:colors.text}]}>Current ETH Price</Text>
+					<Text style={[styles.right, {color:colors.text}]}>1420 USD</Text>
 				</View>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 1 Title 3</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 3</Text>
+					<Text style={[styles.left, {color:colors.text}]}>Commission fee over total value</Text>
+					<Text style={[styles.right, {color:colors.text}]}>0.39%</Text>
 				</View>
-
 				<Text style = {[styles.paragraph, {color:colors.text}]}>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Maecenas ornare lacus sit amet est finibus, ut eleifend tellus ultrices. 
-				Praesent pretium gravida sapien, vel lobortis enim lacinia eu. 
-				Duis sodales ex at leo semper, euismod commodo tellus feugiat. 
-				Maecenas luctus mattis egestas. 
+					100% ETH on BSC Chain
 				</Text>
 			</Animated.View>
 		)
@@ -50,25 +46,11 @@ const NFT1Screen = () => {
 		return (
 			<Animated.View entering={enteringAnimation} style={styles.content}>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 2 Title 1</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 1</Text>
+					<Text style={[styles.left, {color:colors.text}]}>This NFT is active and generating 5 $Drip every day.</Text>
 				</View>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 2 Title 2</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 2</Text>
+					<Text style={[styles.left, {color:colors.text}]}>This NFT has not been renewed. The Speed multiplier is 1.0X</Text>
 				</View>
-				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 2 Title 3</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 3</Text>
-				</View>
-
-				<Text style = {[styles.paragraph, {color:colors.text}]}>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Maecenas ornare lacus sit amet est finibus, ut eleifend tellus ultrices. 
-				Praesent pretium gravida sapien, vel lobortis enim lacinia eu. 
-				Duis sodales ex at leo semper, euismod commodo tellus feugiat. 
-				Maecenas luctus mattis egestas. 
-				</Text>
 			</Animated.View>
 		)
 	}
@@ -77,25 +59,16 @@ const NFT1Screen = () => {
 		return (
 			<Animated.View entering={enteringAnimation} style={styles.content}>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 3 Title 1</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 1</Text>
+					<Text style={[styles.left, {color:colors.text, fontSize:18}]}>Holders Left</Text>
+					<Text style={[styles.right, {color:colors.text, fontSize:18}]}>792 / 1000</Text>
+				</View>
+				<View style={{height:20}}></View>
+				<View style={styles.listItem}>
+					<Text style={[styles.left, {color:colors.text}]}>* You can get 100 USD when there are only 5 holders.</Text>
 				</View>
 				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 3 Title 2</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 2</Text>
+					<Text style={[styles.left, {color:colors.text}]}>* You can get back >126.3% of the commission you put in the holder pool</Text>
 				</View>
-				<View style={styles.listItem}>
-					<Text style={[styles.left, {color:colors.text}]}>Section 3 Title 3</Text>
-					<Text style={[styles.right, {color:colors.text}]}>Content 3</Text>
-				</View>
-
-				<Text style = {[styles.paragraph, {color:colors.text}]}>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-				Maecenas ornare lacus sit amet est finibus, ut eleifend tellus ultrices. 
-				Praesent pretium gravida sapien, vel lobortis enim lacinia eu. 
-				Duis sodales ex at leo semper, euismod commodo tellus feugiat. 
-				Maecenas luctus mattis egestas. 
-				</Text>
 			</Animated.View>
 		)
 	}
@@ -116,26 +89,28 @@ return (
 		<TouchableOpacity containerStyle={styles.backButton} onPress={() => navigation.goBack()}>
 			<Ionicons name="chevron-back-outline" style={{color:colors.text}} size={40}/>
 		</TouchableOpacity>
-        <Image
-        style={styles.poster}
-        source={require('../../assets/card1.png')}
-        />
-        <Text style={[styles.title, {color: colors.text}]}>This is where the Topic will Go</Text>
+		<NFTCardCover>
+			<Image
+			style={styles.poster}
+			source={require('../../assets/card1.png')}
+			/>
+		</NFTCardCover>
+        <Text style={[styles.title, {color: colors.text}]}>Crytal Card 1</Text>
 
         <View style={[styles.menu, {borderBottomColor: colors.borderBottom}]}>
 			<TouchableOpacity onPress={() => setSection(1)}>
             <Text style={section == 1 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-                Section 1
+				Investment
             </Text>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => setSection(2)}>
             <Text style={section == 2 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-                Section 2
+				Drip Mining
             </Text>
 			</TouchableOpacity>
 			<TouchableOpacity onPress={() => setSection(3)}>
 			<Text style={section == 3 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-                Section 3
+				Holders/Pools
             </Text>
 			</TouchableOpacity>
         </View>
@@ -173,9 +148,10 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 20,
-		margin:10,
+		margin:15,
 		width: '80%',
-		textAlign: 'center'
+		textAlign: 'center',
+		fontWeight: 'bold'
 	},
 	menu: {
 		borderBottomWidth: 1,
@@ -215,6 +191,7 @@ const styles = StyleSheet.create({
 		textAlign:'right',
 		marginHorizontal:20,
 		marginVertical: 5,
+		textAlignVertical: 'center'
 	},
 	paragraph: {
 		marginVertical: 10,

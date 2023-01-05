@@ -6,6 +6,7 @@ import { useTheme } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler'
+import NFTCardCover from '../../components/NFTCardCover.js'
 
 const enteringAnimation = new Keyframe({
     0: {
@@ -116,11 +117,13 @@ return (
 		<View style={{height:20}} />
 		<TouchableOpacity containerStyle={styles.backButton} onPress={() => navigation.goBack()}>
 			<Ionicons name="chevron-back-outline" style={{color:colors.text}} size={40}/>
-		</TouchableOpacity>        
-		<Image
-        style={styles.poster}
-        source={require('../../assets/card2.png')}
-        />
+		</TouchableOpacity>       
+		<NFTCardCover>
+			<Image
+			style={styles.poster}
+			source={require('../../assets/card2.png')}
+			/>
+		</NFTCardCover>
         <Text style={[styles.title, {color: colors.text}]}>This is where the Topic will Go</Text>
 
         <View style={[styles.menu, {borderBottomColor: colors.borderBottom}]}>

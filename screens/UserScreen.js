@@ -4,7 +4,7 @@ import { useTheme } from '@react-navigation/native';
 import ProgressBar from '../components/ProgressBar.js'
 import { LinearGradient } from 'expo-linear-gradient';
 
-export default UserScreen = () => {
+const UserScreen = () => {
 
   const { colors } = useTheme();
 
@@ -33,23 +33,6 @@ export default UserScreen = () => {
 
         <View style={styles.subContainer}>
             <Text style={[styles.subtitle, {color:colors.text}]}>
-                Preference
-            </Text>
-            <View style = {styles.subContainerList}>
-                <TouchableOpacity>
-                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Display</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>News</Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>App Feedback</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-
-        <View style={styles.subContainer}>
-            <Text style={[styles.subtitle, {color:colors.text}]}>
                 User Profile
             </Text>
             <View style = {styles.subContainerList}>
@@ -67,20 +50,41 @@ export default UserScreen = () => {
 
         <View style={styles.subContainer}>
             <Text style={[styles.subtitle, {color:colors.text}]}>
-                Notification
+                Portfolio Analysis
             </Text>
             <View style = {styles.subContainerList}>
+                <TouchableOpacity>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Portfolio Overview</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Deposit Assets</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Withdrawn Money</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+
+        <View style={styles.subContainer}>
+            <Text style={[styles.subtitle, {color:colors.text}]}>
+                Preference
+            </Text>
+            <View style = {styles.subContainerList}>
+                <TouchableOpacity>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Display</Text>
+                </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style={[styles.subContainerListItem, {color:colors.text}]}>News</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Investment Plans</Text>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>App Feedback</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Promotions</Text>
+                    <Text style={[styles.subContainerListItem, {color:colors.text}]}>Notification</Text>
                 </TouchableOpacity>
             </View>
         </View>
+
 
     </View>
     </ScrollView>
@@ -145,3 +149,5 @@ const styles = StyleSheet.create({
     },
 
   });
+
+export default UserScreen

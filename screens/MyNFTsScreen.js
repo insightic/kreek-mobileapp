@@ -24,8 +24,6 @@ const colors = [
     '#F1F1F1',
 ];
 
-
-
 const MyNFTsScreen = (props) => {
     const { colors } = useTheme();
     const [currIdx, setCurrIdx] = useState(0)
@@ -48,6 +46,7 @@ const MyNFTsScreen = (props) => {
         <View style={{flex:2}} />
 
         <View style={{flex:1}} />
+        
 
         <View style={{flex:3 }} />
     </View>
@@ -115,12 +114,12 @@ const sampleUser2 = [ require('../assets/user3.png'), require('../assets/user4.p
 const sampleUser3 = [require('../assets/user1.png'), require('../assets/user4.png'), require('../assets/user2.png'), require('../assets/user3.png')]
 
 const card_deck = [
-  { id: "1", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1, dayInvested : 30, tokenAdded : 5},
-  { id: "2", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2, dayInvested : 20, tokenAdded : 3},
-  { id: "3", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3, dayInvested : 10, tokenAdded : 2},
-  { id: "4", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1, dayInvested : 30, tokenAdded : 5},
-  { id: "5", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2, dayInvested : 20, tokenAdded : 3},
-  { id: "6", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3, dayInvested : 10, tokenAdded : 2},
+  { id: "1", uri: require('../assets/card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+  { id: "2", uri: require('../assets/card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+  { id: "3", uri: require('../assets/card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
+  { id: "4", uri: require('../assets/card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+  { id: "5", uri: require('../assets/card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+  { id: "6", uri: require('../assets/card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
 ]
 
 

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "kreek-mobileapp",
-    "slug": "kreek-mobileapp",
+    "slug": "kreek-mobile-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,6 +28,22 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "packagerOpts": {
+      "config": "metro.config.js",
+      "sourceExts": [
+        "js",
+        "jsx",
+        "json",
+        "wasm",
+        "svg"
+      ]
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b0fb5237-11e6-4e9e-a517-5af4fe32dffd"
+      }
+    },
+    "owner": "jason_ng"
   }
 }
