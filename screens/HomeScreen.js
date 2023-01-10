@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
       flex: 1,
     },
     tabBar2: {
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
       flexDirection: 'row',
       position:'absolute',
       bottom:0,

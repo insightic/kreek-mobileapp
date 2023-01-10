@@ -123,11 +123,11 @@ export default function App() {
           headerTitle: null,
           headerLeft: () => (
             <View style={{flexDirection:'row', marginLeft:20}} >
-            {/* <Image
-             style={{width: 100, height: 50 , marginLeft:15, fill:'#fff'}}
+            <Image
+             style={{width: 100, height: 30 , marginLeft:10, fill:'#fff'}}
              //source={{uri:"https://source.unsplash.com/user/c_v_r/100x100"}}
-             source={require('./assets/brand.png')}
-            /> */}
+             source={isDark ? require('./assets/kreek_yellow.png') : require('./assets/kreek.png')}
+            />
             {/* <Logo width={50} fill={isDark? 'white': 'black'}/> */}
 
             </View>

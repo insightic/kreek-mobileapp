@@ -18,12 +18,12 @@ const UserScreen = () => {
     <ScrollView>
     <View style={[styles.container]}>
         <View style={styles.userTop}>
-            <View style={styles.userTopLeft}>
+            {/* <View style={styles.userTopLeft}>
                 <Image
                 style={styles.profilePic}
                 source={require('../assets/profilepic.png')}
                 />
-            </View>
+            </View> */}
             <View style={styles.userTopRight}>
                 <Text style={[styles.title, {color:colors.text}]}>Ape@NFT</Text>
                 <Text style={[styles.title, {color:colors.text}]}>Level 6    My Kreek Token: 50</Text>

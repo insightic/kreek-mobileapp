@@ -110,6 +110,8 @@ function CarouselParallax(props) {
                     })}
                 </View>
             )}
+            {/* <Text style={{color:colors.text, fontSize:18}}>{currIdx + 1} / {itemList.length} </Text> */}
+            
             <Carousel
                 {...baseOptions}
                 style={styles.carousel}
@@ -254,27 +256,28 @@ const styles = StyleSheet.create({
     }, 
     card_cover: {
         flex: 1,  
-        backgroundColor: 'grey',
+        backgroundColor: '#E6E6E630',
         alignItems:'center',
         justifyContent: 'center',
-        padding:10,
+        padding:2,
         borderRadius: 20,
         transform: [
-            {rotateX: '15deg'},
-            {rotateY: '15deg'},
+            {rotateX: '5deg'},
+            {rotateY: '-15deg'},
             {rotateZ: '0deg'}
         ]
     },  
     card: {
         flex: 1,
         height: 300,
-        width: 200,
+        width: 300,
         resizeMode: "contain",
         borderRadius: 20,
     },
     carousel: {
         justifyContent:'center',
-        width: '100%'
+        width: '100%',
+        padding:10
     },
     info: {
         justifyContent:'center',
