@@ -14,8 +14,8 @@ export const lightColor = {
     main2: '2293A3',
 
     background_contrast: '#FFFFFF',
-    text_contrast: '#000000',
-    textFade_contrast: '#00000060',
+    text_contrast: '#40bd9c',
+    textFade_contrast: '#40bd9c60',
     underline_contrast: '#FF6F00',
     borderBottom_contrast: '#00000080',
 
@@ -35,8 +35,8 @@ export const darkColor = {
     main2: '2293A3',
 
     background_contrast: '#222222',
-    text_contrast: '#ffffff',
-    textFade_contrast: '#ffffff60',
+    text_contrast: '#4CFC86C0',
+    textFade_contrast: '#4CFC8640',
     underline_contrast: '#FFFF00',
     borderBottom_contrast: '#ffffff80'
 };
