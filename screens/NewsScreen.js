@@ -122,14 +122,21 @@ const sampleUser1 = [require('../assets/user1.png'), require('../assets/user2.pn
 const sampleUser2 = [ require('../assets/user3.png'), require('../assets/user4.png'), require('../assets/user1.png'), require('../assets/user2.png')]
 const sampleUser3 = [require('../assets/user1.png'), require('../assets/user4.png'), require('../assets/user2.png'), require('../assets/user3.png')]
 
+// const card_deck = [
+//   { id: "1", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
+//   { id: "2", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
+//   { id: "3", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+//   { id: "4", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1,},
+//   { id: "5", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
+//   { id: "6", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+// ]
 const card_deck = [
-  { id: "1", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
-  { id: "2", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
-  { id: "3", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
-  { id: "4", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1,},
-  { id: "5", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
-  { id: "6", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+    { id: "1", uri: require('../assets/new_card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+    { id: "2", uri: require('../assets/new_card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+    { id: "3", uri: require('../assets/new_card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
+    { id: "4", uri: require('../assets/new_card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+    { id: "5", uri: require('../assets/new_card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+    { id: "6", uri: require('../assets/new_card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
 ]
-
 
 export default NewsScreen;

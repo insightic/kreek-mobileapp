@@ -135,7 +135,7 @@ function CarouselParallax(props) {
                 renderItem={({ item }) => (
                 <View style={styles.card_container}>
                 <View style={styles.card_cover}>
-                    <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.to)}>
+                    <TouchableOpacity onPress={() => navigation.navigate(item.to)}>
                         <Image style={styles.card} source={item.uri} />
                     </TouchableOpacity>
                 </View>
