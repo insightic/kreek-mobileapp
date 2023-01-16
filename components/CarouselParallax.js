@@ -13,6 +13,7 @@ import { ElementsText, window } from './carousel/constant';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 import { Audio } from 'expo-av';
+import {LinearGradient} from "expo-linear-gradient";
 
 const PAGE_WIDTH = window.width;
 let dotColors = [
@@ -76,7 +77,13 @@ function CarouselParallax(props) {
             }}
         >
         {!!progressValue && (
-            <View style={{backgroundColor:'#66666666',width:'100%',opacity:0.8}}>
+            <View style={{
+                backgroundColor:'#245B4F10',
+                width:'100%',
+                opacity:0.8,
+                paddingTop:10,
+            }}>
+
                 <View
                     style={
                         isVertical
@@ -110,6 +117,7 @@ function CarouselParallax(props) {
                         );
                     })}
                 </View>
+
             </View>
             )}
             {/* <Text style={{color:colors.text, fontSize:18}}>{currIdx + 1} / {itemList.length} </Text> */}
@@ -141,7 +149,8 @@ function CarouselParallax(props) {
                         <Image style={styles.card} source={item.uri} />
                     </TouchableOpacity>
                 </View>
-                </View>)}
+                </View>
+                )}
             />
 
             <InfoBlock index={currIdx} days={itemList[currIdx]['dayInvested']} totalToken={itemList[currIdx]['totalToken']} tokenSpeed={itemList[currIdx]['tokenSpeed']} numUsers={itemList[currIdx]['numUsers']}/>
@@ -281,7 +290,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding:10,
         opacity:0.8,
-        backgroundColor:'#66666666',
+        backgroundColor:'#245B4F10',
     },
     info: {
         justifyContent:'center',

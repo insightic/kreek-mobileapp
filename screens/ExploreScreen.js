@@ -36,14 +36,12 @@ const ExploreScreen = (props) => {
         start={{x: 0, y: 0.5}}
         end={{x: 1, y: 1}}
         style={styles.container}>
-        <View style={{flex:1}} />
-
+        <View style={{flex:1, backgroundColor:'#245B4F10', opacity:0.8}} />
         <View style={{flex: 10, alignItems:'center', zIndex:2}}>
         <CarouselParallax itemList={card_deck} enableSound={enableSound} />
         {/* <Button title='click' onPress={() => setCurrIdx(currIdx + 1)} /> */}
         </View>
         <View style={{flex:2}} />
-
         <View style={{flex:1}} />
         <LinearGradient
         colors={['#2EBB96FF', '#2EBB96FF', '#2EBB96FF']}

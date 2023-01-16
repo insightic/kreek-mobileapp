@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 		marginTop: 45,
-		backgroundColor: '#dddddd80',
+		backgroundColor: '#EAE8E840',
 		opacity: 0.8,
 		width: '90%',
 		height: '80%',

@@ -145,9 +145,9 @@ export default function App() {
               ),
           })}/>
         <Stack.Screen name="User" component={UserScreen} />
-        <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false,  ...TransitionPresets.ModalSlideFromBottomIOS}}/>
-        <Stack.Screen name="NFT2" component={NFT2Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
-        <Stack.Screen name="NFT3" component={NFT3Screen} options={{headerShown:false, ...TransitionPresets.ModalSlideFromBottomIOS}}/>
+        <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false,  ...TransitionPresets.ScaleFromCenterAndroid}}/>
+        <Stack.Screen name="NFT2" component={NFT2Screen} options={{headerShown:false, ...TransitionPresets.ScaleFromCenterAndroid}}/>
+        <Stack.Screen name="NFT3" component={NFT3Screen} options={{headerShown:false, ...TransitionPresets.ScaleFromCenterAndroid}}/>
         {/* <Stack.Screen name="Temp" component={Temp} /> */}
 
       </Stack.Navigator>

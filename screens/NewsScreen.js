@@ -34,9 +34,9 @@ const NewsScreen = (props) => {
         colors={['#2DDFF515','#11437815', '#17E19327']}
 
         start={{x: 0, y: 0.5}}
-    end={{x: 1, y: 1}}
-    style={styles.container}>
-        <View style={{flex:1}} />
+        end={{x: 1, y: 1}}
+        style={styles.container}>
+        <View style={{flex:1, backgroundColor:'#245B4F10', opacity:0.8}} />
 
         <View style={{flex: 10, alignItems:'center', zIndex:2}}>
         <CarouselParallax itemList={card_deck} enableSound={enableSound}/>
