@@ -91,37 +91,41 @@ return (
 		<TouchableOpacity containerStyle={styles.backButton} onPress={() => navigation.goBack()}>
 			<Ionicons name="chevron-back-outline" style={{color:colors.text}} size={40}/>
 		</TouchableOpacity>
-		<NFTCardCover>
-			<Image
-			style={styles.poster}
-			source={require('../../assets/card1.png')}
-			/>
-		</NFTCardCover>
-        <Text style={[styles.title, {color: colors.text}]}>Crytal Card 1</Text>
+		<View style={styles.containerBG}>
+			<NFTCardCover>
+				<Image
+					style={styles.poster}
+					source={require('../../assets/card1.png')}
+				/>
+			</NFTCardCover>
+			<Text style={[styles.title, {color: colors.text}]}>Crytal Card 1</Text>
 
-        <View style={[styles.menu, {borderBottomColor: colors.borderBottom}]}>
-			<TouchableOpacity onPress={() => setSection(1)}>
-            <Text style={section == 1 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-				Investment
-            </Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => setSection(2)}>
-            <Text style={section == 2 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-				Drip Mining
-            </Text>
-			</TouchableOpacity>
-			<TouchableOpacity onPress={() => setSection(3)}>
-			<Text style={section == 3 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
-				Holders/Pools
-            </Text>
-			</TouchableOpacity>
-        </View>
+			<View style={[styles.menu, {borderBottomColor: colors.borderBottom}]}>
+				<TouchableOpacity onPress={() => setSection(1)}>
+					<Text style={section == 1 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
+						Investment
+					</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => setSection(2)}>
+					<Text style={section == 2 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
+						Drip Mining
+					</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => setSection(3)}>
+					<Text style={section == 3 ? [styles.subtitleActive, { color: colors.text}]: [styles.subtitle,{ color: colors.textFade}]}>
+						Holders/Pools
+					</Text>
+				</TouchableOpacity>
+			</View>
 
-		{section == 1 && <Section1 />}
-		{section == 2 && <Section2 />}
-		{section == 3 && <Section3 />}
+			{section == 1 && <Section1 />}
+			{section == 2 && <Section2 />}
+			{section == 3 && <Section3 />}
 
-        <View style={{flex:3}} />
+			<View style={{flex:3}} />
+		</View>
+		<View style={{height:20}} />
+
     </View>
 
 	</ScrollView>
@@ -136,6 +140,19 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 		height:'100%'
+	},
+	containerBG:{
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		marginTop: 45,
+		backgroundColor: '#dddddd80',
+		opacity: 0.8,
+		width: '90%',
+		height: '80%',
+		borderRadius: 20,
+		elevation:3,
 	},
 	backButton: {
 		position: 'absolute',

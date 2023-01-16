@@ -76,6 +76,7 @@ function CarouselParallax(props) {
             }}
         >
         {!!progressValue && (
+            <View style={{backgroundColor:'#66666666',width:'100%',opacity:0.8}}>
                 <View
                     style={
                         isVertical
@@ -109,6 +110,7 @@ function CarouselParallax(props) {
                         );
                     })}
                 </View>
+            </View>
             )}
             {/* <Text style={{color:colors.text, fontSize:18}}>{currIdx + 1} / {itemList.length} </Text> */}
 
@@ -277,7 +279,9 @@ const styles = StyleSheet.create({
     carousel: {
         justifyContent:'center',
         width: '100%',
-        padding:10
+        padding:10,
+        opacity:0.8,
+        backgroundColor:'#66666666',
     },
     info: {
         justifyContent:'center',

@@ -120,6 +120,8 @@ return (
 		<TouchableOpacity containerStyle={styles.backButton} onPress={() => navigation.goBack()}>
 			<Ionicons name="chevron-back-outline" style={{color:colors.text}} size={40}/>
 		</TouchableOpacity>
+
+		<View style={styles.containerBG}>
 		<NFTCardCover>
 			<Image
 			style={styles.poster}
@@ -151,7 +153,9 @@ return (
 		{section == 3 && <Section3 />}
 
         <View style={{flex:3}} />
-    </View>
+		</View>
+		<View style={{height:20}} />
+	</View>
 
 	</ScrollView>
 	</LinearGradient>
@@ -164,6 +168,19 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+	},
+	containerBG:{
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+		marginTop: 45,
+		backgroundColor: '#dddddd80',
+		opacity: 0.8,
+		width: '90%',
+		height: '80%',
+		borderRadius: 20,
+		elevation:3,
 	},
 	backButton: {
 		position: 'absolute',
