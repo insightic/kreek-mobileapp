@@ -78,7 +78,7 @@ function CarouselParallax(props) {
         >
         {!!progressValue && (
             <View style={{
-                backgroundColor:'#245B4F10',
+                backgroundColor:'#245B4F05',
                 width:'100%',
                 opacity:0.8,
                 paddingTop:10,
@@ -290,7 +290,7 @@ const styles = StyleSheet.create({
         width: '100%',
         padding:10,
         opacity:0.8,
-        backgroundColor:'#245B4F10',
+        backgroundColor:'#245B4F05',
     },
     info: {
         justifyContent:'center',

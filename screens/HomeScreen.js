@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
         }
       };
     const { colors } = useTheme();
-    const IconList = ['coins', 'award', 'newspaper','user']
+    const IconList = ['coins', 'award', 'elementor','user-alt']
 
     const renderTabBar = (props) => {
       const inputRange = props.navigationState.routes.map((x, i) => i);
