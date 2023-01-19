@@ -114,12 +114,12 @@ const sampleUser2 = [ require('../assets/user3.png'), require('../assets/user4.p
 const sampleUser3 = [require('../assets/user1.png'), require('../assets/user4.png'), require('../assets/user2.png'), require('../assets/user3.png')]
 
 const card_deck = [
-  { id: "1", uri: require('../assets/new_card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
-  { id: "2", uri: require('../assets/new_card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
-  { id: "3", uri: require('../assets/new_card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
-  { id: "4", uri: require('../assets/new_card1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
-  { id: "5", uri: require('../assets/new_card2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
-  { id: "6", uri: require('../assets/new_card3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
+  { id: "1", uri: require('../assets/cardImage1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+  { id: "2", uri: require('../assets/cardImage2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+  { id: "3", uri: require('../assets/cardImage3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
+  { id: "4", uri: require('../assets/cardImage4.png'), to:'NFT1', numUsers: 221, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+  { id: "5", uri: require('../assets/cardImage5.png'), to:'NFT2', numUsers: 231, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+  { id: "6", uri: require('../assets/cardImage6.png'), to:'NFT3', numUsers: 312, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
 ]
 
 

@@ -7,6 +7,8 @@ import MyNFTsScreen from "./MyNFTsScreen.js";
 import NewsScreen from "./NewsScreen.js";
 import ExploreScreen from "./ExploreScreen.js";
 import UserScreen from "./UserScreen.js";
+import LoginScreen from "./LoginScreen.js";
+import RegisterScreen from "./RegisterScreen.js";
 
 import { useTheme } from '@react-navigation/native';
 
@@ -26,6 +28,8 @@ const HomeScreen = (props) => {
       { key: 'myNFTs', title: 'My NFTs' },
       { key: 'news', title: 'News' },
       { key: 'user', title: 'User' },
+      { key: 'login', title: 'Login' },
+      { key: 'register', title: 'Register' },
     ]);
     const [sounds, setSounds] = React.useState(Array(routes.length).fill(0))
     // const renderScene = SceneMap({
@@ -45,6 +49,10 @@ const HomeScreen = (props) => {
             return <NewsScreen enableSound={sounds[2]}/>;
           case 'user':
             return <UserScreen enableSound={sounds[3]}/>;
+          case 'login':
+            return <LoginScreen enableSound={sounds[3]}/>;
+          case 'register':
+            return <RegisterScreen enableSound={sounds[3]}/>;
           default:
             return null;
         }

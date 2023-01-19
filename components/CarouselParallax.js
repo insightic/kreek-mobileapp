@@ -13,6 +13,7 @@ import { ElementsText, window } from './carousel/constant';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 import { Audio } from 'expo-av';
+import NFTCardTemplate from './NFTCardTemplate';
 
 const PAGE_WIDTH = window.width;
 let dotColors = [
@@ -136,8 +137,11 @@ function CarouselParallax(props) {
                 <View style={styles.card_container}>
                 <View style={styles.card_cover}>
                     <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.to)}>
-                        <Image style={styles.card} source={item.uri} />
+                        {/* <Image style={styles.card} source={item.uri} /> */}
+                        <NFTCardTemplate uri={item.uri} />
+
                     </TouchableOpacity>
+
                 </View>
                 </View>)}
             />
@@ -256,7 +260,7 @@ const styles = StyleSheet.create({
     }, 
     card_cover: {
         flex: 1,  
-        backgroundColor: '#E6E6E630',
+        // backgroundColor: '#E6E6E630',
         alignItems:'center',
         justifyContent: 'center',
         padding:2,
@@ -301,7 +305,6 @@ const infoStyles = StyleSheet.create({
     stat: {
         justifyContent:"center",
         flexDirection:"column",
-        width:'30%',
         marginVertical: 20,
     },
     row: {
