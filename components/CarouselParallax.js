@@ -78,6 +78,7 @@ function CarouselParallax(props) {
             }}
         >
         {!!progressValue && (
+
             <View style={styles.spot_bar}>
                 <View
                     style={
@@ -414,7 +415,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         width: '100%',
         marginTop:20,
-        backgroundColor:'#245B4F10',
+        padding:10,
+        opacity:0.8,
+        backgroundColor:'#245B4F05',
     },
     info: {
         justifyContent:'center',
