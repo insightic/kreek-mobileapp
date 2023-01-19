@@ -45,16 +45,16 @@ const NewsScreen = (props) => {
         <View style={{flex:2}} />
 
         <View style={{flex:1}} />
-        <LinearGradient
-            colors={['#2EBB96FF', '#2EBB96FF', '#2EBB96FF']}
-            start={{x: 0, y: 0.5}}
-            end={{x: 1, y: 1}}
-            style={styles.button}
-        >
-        <TouchableOpacity>
-            <Text style={styles.buttonText}>READ</Text>
-        </TouchableOpacity>
-        </LinearGradient>
+        {/*<LinearGradient*/}
+        {/*    colors={['#2EBB96FF', '#2EBB96FF', '#2EBB96FF']}*/}
+        {/*    start={{x: 0, y: 0.5}}*/}
+        {/*    end={{x: 1, y: 1}}*/}
+        {/*    style={styles.button}*/}
+        {/*>*/}
+        {/*<TouchableOpacity>*/}
+        {/*    <Text style={styles.buttonText}>READ</Text>*/}
+        {/*</TouchableOpacity>*/}
+        {/*</LinearGradient>*/}
         <View style={{flex:3 }} />
     </LinearGradient>
     );

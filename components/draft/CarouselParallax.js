@@ -1,7 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { TouchableOpacity, Button, Easing, StyleSheet, View, Text, Image } from 'react-native';
+import { TouchableOpacity, Button, Easing, StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
 import { Ionicons, EvilIcons, MaterialIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import Carousel from 'react-native-reanimated-carousel';
+import CardView from 'react-native-cardview'
 
 import Animated, {
     Extrapolate,
@@ -38,36 +39,36 @@ function CarouselParallax(props) {
     const itemList = props.itemList
     const baseOptions = isVertical
         ? ({
-              vertical: true,
-              width: PAGE_WIDTH,
-              height: PAGE_WIDTH * 0.6,
-          })
+            vertical: true,
+            width: PAGE_WIDTH,
+            height: PAGE_WIDTH * 0.6,
+        })
         : ({
-              vertical: false,
-              width: 300,
-              height: 410,
-          });
+            vertical: false,
+            width: 300,
+            height: 410,
+        });
 
-          const enableSound = props.enableSound
-          const [sound, setSound] = React.useState();
+    const enableSound = props.enableSound
+    const [sound, setSound] = React.useState();
 
-          async function playSound() {
-            if (enableSound) {
-                const { sound } = await Audio.Sound.createAsync( require('../assets/card_flip.mp3')
-                );
-                setSound(sound);
+    async function playSound() {
+        if (enableSound) {
+            const { sound } = await Audio.Sound.createAsync( require('../assets/card_flip.mp3')
+            );
+            setSound(sound);
 
-                await sound.playAsync();
+            await sound.playAsync();
+        }
+    }
+
+    React.useEffect(() => {
+        return sound
+            ? () => {
+                sound.unloadAsync();
             }
-          }
-
-          React.useEffect(() => {
-            return sound
-              ? () => {
-                  sound.unloadAsync();
-                }
-              : undefined;
-          }, [sound]);
+            : undefined;
+    }, [sound]);
 
     return (
         <View
@@ -77,43 +78,43 @@ function CarouselParallax(props) {
                 width:800,
             }}
         >
-        {!!progressValue && (
-            <View style={styles.spot_bar}>
-                <View
-                    style={
-                        isVertical
-                            ? {
-                                  flexDirection: 'column',
-                                  justifyContent: 'space-between',
-                                  width: 10,
-                                  alignSelf: 'center',
-                                  position: 'absolute',
-                                  right: 5,
-                                  top: 40,
-                              }
-                            : {
-                                  flexDirection: 'row',
-                                  justifyContent: 'space-between',
-                                  width: 100,
-                                  alignSelf: 'center',
-                              }
-                    }
-                >
-                    {dotColors.map((backgroundColor, index) => {
-                        return (
-                            <PaginationItem
-                                backgroundColor={backgroundColor}
-                                animValue={progressValue}
-                                index={index}
-                                key={index}
-                                isRotate={isVertical}
-                                length={dotColors.length}
-                            />
-                        );
-                    })}
-                </View>
+            {!!progressValue && (
+                <View style={styles.spot_bar}>
+                    <View
+                        style={
+                            isVertical
+                                ? {
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    width: 10,
+                                    alignSelf: 'center',
+                                    position: 'absolute',
+                                    right: 5,
+                                    top: 40,
+                                }
+                                : {
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    width: 100,
+                                    alignSelf: 'center',
+                                }
+                        }
+                    >
+                        {dotColors.map((backgroundColor, index) => {
+                            return (
+                                <PaginationItem
+                                    backgroundColor={backgroundColor}
+                                    animValue={progressValue}
+                                    index={index}
+                                    key={index}
+                                    isRotate={isVertical}
+                                    length={dotColors.length}
+                                />
+                            );
+                        })}
+                    </View>
 
-            </View>
+                </View>
             )}
             {/* <Text style={{color:colors.text, fontSize:18}}>{currIdx + 1} / {itemList.length} </Text> */}
 
@@ -138,41 +139,73 @@ function CarouselParallax(props) {
                 onSnapToItem={(index) => {setCurrIdx(index)}}
                 data={itemList}
                 renderItem={({ item }) => (
-                <View style={styles.card_container}>
-                     <LinearGradient
-                        colors={['#66009900', '#9900ff00', '#9933cc00']}
-                        start={{x: 0.5, y: 0}}
-                        end={{x: 0.5, y: 1}}
-                        style={styles.card_cover1}
-                    >
-                        <LinearGradient
-                            colors={['#402577DD', '#b3a4d5DD', '#20133cDD']}
-                            start={{x: 0.6, y: 0}}
-                            end={{x: 0.5, y: 0.8}}
-                            style={styles.card_cover2}
-                        >
-                            <View style={styles.top_cover1}>
-                                <View style={styles.top_cover2}>
-                                    <Text style={[{color: colors.text},{fontSize:15}]}>&nbsp;&nbsp;#235&nbsp;&nbsp;</Text>
-                                </View>
-                            </View>
-                            <View style={styles.image_cover1}>
-                                <View style={styles.image_cover2}>
-                                    <TouchableOpacity onPress={() => navigation.navigate(item.to)}>
-                                        <Image style={styles.card} source={item.uri} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <View style={styles.text_cover1}>
-                                <View style={styles.text_cover2}>
-                                    <Text style={[{color: colors.text},{fontSize:20}]}>--Kreek Seasonal Plan 1--</Text>
-                                    <Text style={[{color: colors.text},{fontSize:20}]}>50USD/Week ETH</Text>
-                                </View>
-                            </View>
+                    <View style={styles.card_container}>
 
+                        {/*<View style={styles.card_cover1}>*/}
+                        <LinearGradient
+                            colors={['rgb(182,87,229)', 'rgba(140,52,199,50)', 'rgba(162,70,208,50)']}
+                            start={{x: 0.5, y: 0}}
+                            end={{x: 0.5, y: 1}}
+                            style={styles.card_cover1}
+                        >
+                            <LinearGradient
+                                colors={['#402577', '#b3a4d5', '#20133c']}
+                                start={{x: 0.6, y: 0}}
+                                end={{x: 0.5, y: 0.8}}
+                                style={styles.card_cover2}
+                            >
+                                {/*<View style={styles.card_cover2}>*/}
+
+                                <View style={styles.top_cover1}>
+                                    <View style={styles.top_cover2}>
+                                        <Text style={[{color: colors.text},{fontSize:15}]}>&nbsp;&nbsp;#235&nbsp;&nbsp;</Text>
+                                    </View>
+                                </View>
+                                <View style={styles.image_cover1}>
+                                    <View style={styles.image_cover2}>
+                                        <TouchableOpacity onPress={() => navigation.navigate(item.to)}>
+                                            {/*<ImageBackground source='../assets/imgbg.PNG' blurRadius={40}>*/}
+                                            {/*<LinearGradient*/}
+                                            {/*    colors={['#252698', '#2547c2', '#25246e']}*/}
+                                            {/*    start={{x: 0, y: 1}}*/}
+                                            {/*    end={{x: 1, y: 0}}*/}
+                                            {/*    style={styles.image_cover3}*/}
+                                            {/*>*/}
+                                            {/*    <LinearGradient*/}
+                                            {/*        colors={['rgba(45,53,208,0.5)', 'rgba(47,39,217,0.5)', 'rgba(10,4,224,0.5)']}*/}
+                                            {/*        start={{x: 0, y: 1}}*/}
+                                            {/*        end={{x: 1, y: 0}}*/}
+                                            {/*        style={styles.image_cover3}*/}
+                                            {/*    >*/}
+                                            {/*        <LinearGradient*/}
+                                            {/*            colors={['rgba(96,92,238,0.19)', 'rgba(82,86,175,0.99)', 'rgba(70,58,155,0.99)']}*/}
+                                            {/*            start={{x: 0, y: 1}}*/}
+                                            {/*            end={{x: 1, y: 0}}*/}
+                                            {/*            style={styles.image_cover3}*/}
+                                            {/*        >*/}
+                                                        <Image blurRadius={1} style={styles.card} source={item.uri} />
+                                            {/*        </LinearGradient>*/}
+                                            {/*    </LinearGradient>*/}
+                                            {/*</LinearGradient>*/}
+
+                                            {/*</ImageBackground>*/}
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                                <View style={styles.text_cover1}>
+                                    <View style={styles.text_cover2}>
+                                        <Text style={[{color: colors.text},{fontSize:20}]}>--Kreek Seasonal Plan 1--</Text>
+                                        <Text style={[{color: colors.text},{fontSize:20}]}>50USD/Week ETH</Text>
+                                    </View>
+                                </View>
+
+                                {/*</View>*/}
+                            </LinearGradient>
                         </LinearGradient>
-                     </LinearGradient>
-                </View>
+                        {/*</View>*/}
+
+
+                    </View>
                 )}
             />
 
@@ -228,10 +261,10 @@ const PaginationItem  = (props) => {
 // for information to be shown
 const enteringAnimation = new Keyframe({
     0: {
-		opacity: 0,
+        opacity: 0,
     },
     100: {
-		opacity: 1,
+        opacity: 1,
     },
 }).duration(500)
 
@@ -285,10 +318,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     spot_bar: {
+        // backgroundColor:'#245B4F00',
         width:'100%',
         // height: 40,
         opacity:0.8,
         paddingTop:10,
+        // paddingBottom:10,
     },
     card_container : {
         flex: 1,
@@ -317,23 +352,25 @@ const styles = StyleSheet.create({
         // padding:35,
         width:300,
         borderRadius: 20,
-        borderColor:'#FFD700FF',
+        borderColor:'#20133c',
         borderWidth:2,
         transform: [
-            {translateX:8},
-            {translateY:-5},
+            {translateX:0},
+            {translateY:0},
+            {scaleX: 0.98}
         ],
-},
+    },
     image_cover1: {
         flex: 1,
-        backgroundColor: '#FFFFFF22',
+        backgroundColor: '#ffffff22',//44b4e5
         alignItems:'center',
         justifyContent: 'center',
         // padding:20,
         marginLeft:20,
         marginTop:10,
+        elevation: 10,
         marginBottom:10,
-        borderRadius: 20,
+        borderRadius: 10,
         borderColor:'#FFFFFF66',
         borderWidth:2,
     },
@@ -342,38 +379,62 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF22',
         alignItems:'center',
         justifyContent: 'center',
-        borderRadius: 20,
-        borderColor:'#FFD700FF',
+        borderRadius: 10,
+        borderColor:'#20133c',
         borderWidth:2,
         elevation:5,
         transform: [
-            {translateX:6},
-            {translateY:-5}
+            {translateX:0},
+            {translateY:0},
+            {scale: 0.99},
+        ]
+    },
+    image_cover3: {
+        flex: 1,
+        // backgroundColor: '#FFFFFF22',
+        alignItems:'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        // borderColor:'#FFFFFFFF',
+        // borderWidth:2,
+        // elevation:5,
+        transform: [
+            {translateX:0},
+            {translateY:0},
+            {scale: 0.98},
         ]
     },
     top_cover1: {
         // flex: 1,
+        width: '83%',
         backgroundColor: '#FFFFFF22',
         alignItems:'center',
         justifyContent: 'center',
         height:30,
         marginLeft:20,
-        marginTop:5,
+        marginTop:7,
+        borderRadius: 10,
         borderColor:'#FFFFFF66',
         borderWidth:2,
-        borderRadius: 10,
     },
     top_cover2: {
+        width: '100%',
         flex: 1,
+        borderRadius: 10,
         backgroundColor: '#FFFFFF22',
         alignItems:'center',
         justifyContent: 'center',
-        borderColor:'#FFD700FF',
+        borderColor:'#20133c',
         borderWidth:2,
-        borderRadius: 10,
+        // shadowColor: 'rgba(255,0,0)',
+        // shadowOpacity: 0.5,
+        // shadowRadius: 5,
+        // elevation: 2,
+        // elevation:3,
         transform: [
-            {translateX:5},
-            {translateY:-3}
+            {translateX:0},
+            {translateY:0},
+            {scale: 0.99}
         ],
     },
     text_cover1: {
@@ -385,21 +446,22 @@ const styles = StyleSheet.create({
         width:250,
         marginLeft:20,
         marginBottom:10,
+        borderRadius: 10,
         borderColor:'#FFFFFF66',
         borderWidth:2,
-        borderRadius: 10,
     },
     text_cover2: {
         flex: 1,
         backgroundColor: '#FFFFFF00',
         alignItems:'center',
         justifyContent: 'center',
-        borderColor:'#FFD700FF',
+        borderColor:'#20133c',
         borderWidth:2,
         borderRadius: 10,
         transform: [
-            {translateX:5},
-            {translateY:-3},
+            {translateX:0},
+            {translateY:0},
+            {scale:0.99}
         ],
     },
 
@@ -408,12 +470,19 @@ const styles = StyleSheet.create({
         height: 200,
         width: 240,
         resizeMode: "center",
-        borderRadius: 20,
+        borderRadius: 10,
+        // margin: 20,
+        // elevation:5,
+        // borderColor:'#f10fd3',
+        // borderWidth:2,
     },
     carousel: {
         justifyContent:'center',
         width: '100%',
+        // height: 400,
+        // paddingTop:20,
         marginTop:20,
+        // opacity:0.8,
         backgroundColor:'#245B4F10',
     },
     info: {
