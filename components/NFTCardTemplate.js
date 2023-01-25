@@ -106,16 +106,15 @@ const styles = StyleSheet.create({
     borderRadius:5,
   },
   cardBottom: {
-    textDecorationLine: 'underline'
-    
+    textDecorationLine: 'underline',
   },
   cardBottomTitle: {
     textAlign:'center',
-    textDecorationLine: 'underline'
-    
+    textDecorationLine: 'underline',
   },
   cardBottomText: {
     textAlign:'center',
+    width:150
   },
 
   
