@@ -20,7 +20,7 @@ import { color, ColorSpace } from "react-native-reanimated";
 const Stack = createStackNavigator();
 
 const HomeScreen = (props) => {
-    
+
     const [index, setIndex] = React.useState(0);
 
     const [routes] = React.useState([
@@ -58,11 +58,11 @@ const HomeScreen = (props) => {
         }
       };
     const { colors } = useTheme();
-    const IconList = ['coins', 'award', 'newspaper','user-circle']
-    
+    const IconList = ['coins', 'award', 'elementor','user-alt']
+
     const renderTabBar = (props) => {
       const inputRange = props.navigationState.routes.map((x, i) => i);
-    
+
       return (
         <View style={[styles.tabBar2, {backgroundColor: colors.background_contrast}]}>
           {props.navigationState.routes.map((route, i) => {
@@ -74,7 +74,7 @@ const HomeScreen = (props) => {
             });
 
             const color = i === index ? colors.text_contrast : colors.textFade_contrast
-    
+
             return (
               <TouchableOpacity
                 style={styles.tabItem}
@@ -94,7 +94,7 @@ const HomeScreen = (props) => {
         <Text>Loading {route.title}…</Text>
       </View>
     );
-    
+
     const renderLazyPlaceholder = ({ route }) => <LazyPlaceholder route={route} />;
 
 
@@ -109,11 +109,11 @@ const HomeScreen = (props) => {
             style={[styles.container, {color: colors.text}]}
             tabBarPosition='bottom'
             swipeEnabled={false}
-            // renderTabBar={props => <TabBar {...props} 
+            // renderTabBar={props => <TabBar {...props}
             //   style={[styles.tabBar, {backgroundColor: colors.background_contrast}]}
             //   activeColor={colors.text_contrast}
             //   inactiveColor={colors.textFade_contrast}
-            //   indicatorStyle={{backgroundColor: 'transparent'}}//{{backgroundColor: colors.underline}} 
+            //   indicatorStyle={{backgroundColor: 'transparent'}}//{{backgroundColor: colors.underline}}
             //   ><Text> HI</Text></TabBar>}
             renderTabBar={renderTabBar}
           />

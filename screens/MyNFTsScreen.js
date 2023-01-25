@@ -33,12 +33,14 @@ const MyNFTsScreen = (props) => {
 
     return (
     <LinearGradient
-    colors={['#80808050','#1A111050', '#454545']}
-    start={{x: 0, y: 0.5}}
-    end={{x: 1, y: 1}}
-    style={styles.container}>
-    <View style={styles.container}>
-        <View style={{flex:1.5}} />
+    // colors={['#80808050','#1A111050', '#454545']}
+        colors={['#2DDFF515','#11437815', '#17E19327']}
+
+        start={{x: 0, y: 0.5}}
+        end={{x: 1, y: 1}}
+        style={styles.container}>
+        <View style={styles.container}>
+        <View style={{flex:0.5}} />
         <View style={{flex: 10, alignItems:'center', zIndex:2}}>
         <CarouselParallax itemList={card_deck} enableSound={enableSound}/>
         {/* <Button title='click' onPress={() => setCurrIdx(currIdx + 1)} /> */}
@@ -46,10 +48,9 @@ const MyNFTsScreen = (props) => {
         <View style={{flex:2}} />
 
         <View style={{flex:1}} />
-        
 
         <View style={{flex:3 }} />
-    </View>
+        </View>
     </LinearGradient>
     );
 };

@@ -2,6 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 import { TouchableOpacity, Button, Easing, StyleSheet, View, Text, Image } from 'react-native';
 import { Ionicons, EvilIcons, MaterialIcons, FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import Carousel from 'react-native-reanimated-carousel';
+
 import Animated, {
     Extrapolate,
     interpolate,
@@ -14,15 +15,16 @@ import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '@react-navigation/native';
 import { Audio } from 'expo-av';
 import NFTCardTemplate from './NFTCardTemplate';
+import {LinearGradient} from "expo-linear-gradient";
 
 const PAGE_WIDTH = window.width;
 let dotColors = [
-    '#26292E',
-    '#899F9C',
-    '#B3C680',
     '#5C6265',
-    '#F5D399',
-    '#F1F1F1',
+    '#5C6265',
+    '#5C6265',
+    '#5C6265',
+    '#5C6265',
+    '#5C6265',
 ];
 
 function CarouselParallax(props) {
@@ -43,8 +45,8 @@ function CarouselParallax(props) {
           })
         : ({
               vertical: false,
-              width: 200,
-              height: 310,
+              width: 300,
+              height: 410,
           });
 
           const enableSound = props.enableSound
@@ -55,11 +57,11 @@ function CarouselParallax(props) {
                 const { sound } = await Audio.Sound.createAsync( require('../assets/card_flip.mp3')
                 );
                 setSound(sound);
-    
+
                 await sound.playAsync();
             }
           }
-        
+
           React.useEffect(() => {
             return sound
               ? () => {
@@ -77,6 +79,8 @@ function CarouselParallax(props) {
             }}
         >
         {!!progressValue && (
+
+            <View style={styles.spot_bar}>
                 <View
                     style={
                         isVertical
@@ -110,9 +114,11 @@ function CarouselParallax(props) {
                         );
                     })}
                 </View>
+
+            </View>
             )}
             {/* <Text style={{color:colors.text, fontSize:18}}>{currIdx + 1} / {itemList.length} </Text> */}
-            
+
             <Carousel
                 {...baseOptions}
                 style={styles.carousel}
@@ -135,15 +141,47 @@ function CarouselParallax(props) {
                 data={itemList}
                 renderItem={({ item }) => (
                 <View style={styles.card_container}>
-                <View style={styles.card_cover}>
-                    <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.to)}>
+                    {/* <View style={styles.card_cover}> */}
+                    {/* <TouchableOpacity style={styles.card} onPress={() => navigation.navigate(item.to)}>
                         {/* <Image style={styles.card} source={item.uri} /> */}
-                        <NFTCardTemplate uri={item.uri} />
+                        {/* <NFTCardTemplate uri={item.uri} /> */}
+                    {/* </TouchableOpacity> */} 
+                    
+                     <LinearGradient
+                        colors={['#66009900', '#9900ff00', '#9933cc00']}
+                        start={{x: 0.5, y: 0}}
+                        end={{x: 0.5, y: 1}}
+                        style={styles.card_cover1}
+                    >
+                        <LinearGradient
+                            colors={['#402577DD', '#b3a4d5DD', '#20133cDD']}
+                            start={{x: 0.6, y: 0}}
+                            end={{x: 0.5, y: 0.8}}
+                            style={styles.card_cover2}
+                        >
+                            <View style={styles.top_cover1}>
+                                <View style={styles.top_cover2}>
+                                    <Text style={[{color: colors.text},{fontSize:15}]}>&nbsp;&nbsp;#235&nbsp;&nbsp;</Text>
+                                </View>
+                            </View>
+                            <View style={styles.image_cover1}>
+                                <View style={styles.image_cover2}>
+                                    <TouchableOpacity onPress={() => navigation.navigate(item.to)}>
+                                        <Image style={styles.card} source={item.uri} />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            <View style={styles.text_cover1}>
+                                <View style={styles.text_cover2}>
+                                    <Text style={[{color: colors.text},{fontSize:20}]}>--Kreek Seasonal Plan 1--</Text>
+                                    <Text style={[{color: colors.text},{fontSize:20}]}>50USD/Week ETH</Text>
+                                </View>
+                            </View>
 
-                    </TouchableOpacity>
-
+                        </LinearGradient>
+                     </LinearGradient>
                 </View>
-                </View>)}
+                )}
             />
 
             <InfoBlock index={currIdx} days={itemList[currIdx]['dayInvested']} totalToken={itemList[currIdx]['totalToken']} tokenSpeed={itemList[currIdx]['tokenSpeed']} numUsers={itemList[currIdx]['numUsers']}/>
@@ -217,24 +255,24 @@ const InfoBlock = (props) => {
 
     return (
         <Animated.View style={[infoStyles.stat, {opacity:animValue}]}>
-            {days && 
-                <View style={infoStyles.row}> 
+            {days &&
+                <View style={infoStyles.row}>
                     <MaterialIcons style={infoStyles.icon} name="date-range" size={30} color={colors.text} />
-                    <Text style={{color: colors.text, fontSize:15}}>Days Holding: </Text>   
+                    <Text style={{color: colors.text, fontSize:15}}>Days Holding: </Text>
                     <Text style={{color: colors.text, fontSize:15}}>{days}</Text>
                 </View>
             }
             {totalToken &&
                 <View style={infoStyles.row}>
                     <FontAwesome style={infoStyles.icon} name="money" size={30} color={colors.text} />
-                    <Text style={{color: colors.text, fontSize:15}}>Token: </Text>   
+                    <Text style={{color: colors.text, fontSize:15}}>Token: </Text>
                     <Text style={{color: colors.text, fontSize:15}}> {totalToken} Drip Tokens (+ {tokenSpeed}/day)</Text>
                 </View>
             }
             {numUsers &&
                 <View style={infoStyles.row}>
                     <FontAwesome style={infoStyles.icon} name="users" size={30} color={colors.text} />
-                    <Text style={{color: colors.text, fontSize:15}}>Pool: </Text>   
+                    <Text style={{color: colors.text, fontSize:15}}>Pool: </Text>
                     <Text style={{color: colors.text, fontSize:15}}> {numUsers} are holding</Text>
                 </View>
             }
@@ -254,34 +292,139 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         flex: 1,
     },
+    spot_bar: {
+        width:'100%',
+        // height: 40,
+        opacity:0.8,
+        paddingTop:10,
+    },
     card_container : {
         flex: 1,
         justifyContent: 'center',
-    }, 
-    card_cover: {
-        flex: 1,  
-        // backgroundColor: '#E6E6E630',
+    },
+    card_cover1: {
+        flex: 1,
+        backgroundColor: '#66666666',
         alignItems:'center',
         justifyContent: 'center',
         padding:2,
         borderRadius: 20,
-        transform: [
-            {rotateX: '5deg'},
-            {rotateY: '-15deg'},
-            {rotateZ: '0deg'}
+        borderColor:'#FFFFFF66',
+        borderWidth:2,
+        transform:[
+            {rotateX:'5deg'},
+            {rotateY:'15deg'},
+            {scale:0.9}
         ]
-    },  
+    },
+    card_cover2: {
+        flex: 1,
+        backgroundColor: '#66666644',
+        alignItems:'flex-start',
+        justifyContent: 'center',
+        // padding:35,
+        width:300,
+        borderRadius: 20,
+        borderColor:'#FFD700FF',
+        borderWidth:2,
+        transform: [
+            {translateX:8},
+            {translateY:-5},
+        ],
+},
+    image_cover1: {
+        flex: 1,
+        backgroundColor: '#FFFFFF22',
+        alignItems:'center',
+        justifyContent: 'center',
+        // padding:20,
+        marginLeft:20,
+        marginTop:10,
+        marginBottom:10,
+        borderRadius: 20,
+        borderColor:'#FFFFFF66',
+        borderWidth:2,
+    },
+    image_cover2: {
+        flex: 1,
+        backgroundColor: '#FFFFFF22',
+        alignItems:'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        borderColor:'#FFD700FF',
+        borderWidth:2,
+        elevation:5,
+        transform: [
+            {translateX:6},
+            {translateY:-5}
+        ]
+    },
+    top_cover1: {
+        // flex: 1,
+        backgroundColor: '#FFFFFF22',
+        alignItems:'center',
+        justifyContent: 'center',
+        height:30,
+        marginLeft:20,
+        marginTop:5,
+        borderColor:'#FFFFFF66',
+        borderWidth:2,
+        borderRadius: 10,
+    },
+    top_cover2: {
+        flex: 1,
+        backgroundColor: '#FFFFFF22',
+        alignItems:'center',
+        justifyContent: 'center',
+        borderColor:'#FFD700FF',
+        borderWidth:2,
+        borderRadius: 10,
+        transform: [
+            {translateX:5},
+            {translateY:-3}
+        ],
+    },
+    text_cover1: {
+        // flex: 1,
+        backgroundColor: '#FFFFFF00',
+        alignItems:'stretch',
+        justifyContent: 'center',
+        height:130,
+        width:250,
+        marginLeft:20,
+        marginBottom:10,
+        borderColor:'#FFFFFF66',
+        borderWidth:2,
+        borderRadius: 10,
+    },
+    text_cover2: {
+        flex: 1,
+        backgroundColor: '#FFFFFF00',
+        alignItems:'center',
+        justifyContent: 'center',
+        borderColor:'#FFD700FF',
+        borderWidth:2,
+        borderRadius: 10,
+        transform: [
+            {translateX:5},
+            {translateY:-3},
+        ],
+    },
+
     card: {
         flex: 1,
-        height: 300,
-        width: 300,
-        resizeMode: "contain",
+        height: 200,
+        width: 240,
+        resizeMode: "center",
         borderRadius: 20,
     },
     carousel: {
         justifyContent:'center',
         width: '100%',
-        padding:10
+        marginTop:20,
+        padding:10,
+        opacity:0.8,
+        backgroundColor:'#245B4F05',
     },
     info: {
         justifyContent:'center',

@@ -30,29 +30,29 @@ const ExploreScreen = (props) => {
 
     return (
     <LinearGradient
-    colors={['#80808050','#1A111050', '#454545']}
-    start={{x: 0, y: 0.5}}
-    end={{x: 1, y: 1}}
-    style={styles.container}>
-        <View style={{flex:1}} />
-
+        // colors={['#AFFEFF20','#AFFEFF20', '#AFFEFF20']}
+        // colors={['#80808020','#80808020', '#80808020']}
+        colors={['#2DDFF515','#11437815', '#17E19327']}
+        start={{x: 0, y: 0.5}}
+        end={{x: 1, y: 1}}
+        style={styles.container}>
+        <View style={{flex:1, backgroundColor:'#245B4F10', opacity:0.8}} />
         <View style={{flex: 10, alignItems:'center', zIndex:2}}>
         <CarouselParallax itemList={card_deck} enableSound={enableSound} />
         {/* <Button title='click' onPress={() => setCurrIdx(currIdx + 1)} /> */}
         </View>
         <View style={{flex:2}} />
-
         <View style={{flex:1}} />
-        <LinearGradient
-        colors={['#c0392b', '#f1c40f', '#8e44ad']}
-        start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 1}}
-        style={styles.button}
-      >
-        <TouchableOpacity>
-            <Text style={styles.buttonText}>COLLECT NOW</Text>
-        </TouchableOpacity>
-        </LinearGradient>
+        {/*<LinearGradient*/}
+        {/*colors={['#2EBB96FF', '#2EBB96FF', '#2EBB96FF']}*/}
+        {/*start={{x: 0, y: 0.5}}*/}
+        {/*end={{x: 1, y: 1}}*/}
+        {/*style={styles.button}*/}
+        {/*>*/}
+        {/*<TouchableOpacity>*/}
+        {/*    <Text style={styles.buttonText}>COLLECT NOW</Text>*/}
+        {/*</TouchableOpacity>*/}
+        {/*</LinearGradient>*/}
         <View style={{flex:3 }} />
     </LinearGradient>
     );
@@ -95,36 +95,46 @@ const styles = StyleSheet.create({
   userLine: {
     flex:1,
   },
-  button: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingVertical: 12,
-    borderRadius: 20,
-    elevation: 3,
-    //backgroundColor:'#FF6F00',
-    width: 280,
-    height: 50
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    letterSpacing: 0.25,
-    color: 'white',
-  },
+    button: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 12,
+        borderRadius: 20,
+        elevation: 3,
+        //backgroundColor:'#FF6F00',
+        width: 280,
+        height: 50,
+        shadowOffset:{width:10,height:10},
+        shadowOpacity: 0.8,
+        shadowRadius: 1.5,
+    },
+    buttonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    },
 });
 
 const sampleUser1 = [require('../assets/user1.png'), require('../assets/user2.png'), require('../assets/user3.png'), require('../assets/user4.png')]
 const sampleUser2 = [ require('../assets/user3.png'), require('../assets/user4.png'), require('../assets/user1.png'), require('../assets/user2.png')]
 const sampleUser3 = [require('../assets/user1.png'), require('../assets/user4.png'), require('../assets/user2.png'), require('../assets/user3.png')]
 
+// const card_deck = [
+//   { id: "1", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
+//   { id: "2", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
+//   { id: "3", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+//   { id: "4", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
+//   { id: "5", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
+//   { id: "6", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+// ]
 const card_deck = [
-  { id: "1", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
-  { id: "2", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
-  { id: "3", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
-  { id: "4", uri: require('../assets/card1.png'), to:'NFT1', desc:"321 / 1000 Investors Are Still Holding", user: sampleUser1},
-  { id: "5", uri: require('../assets/card2.png'), to:'NFT2', desc:"211 / 500 Investors Are Still Holding", user: sampleUser2},
-  { id: "6", uri: require('../assets/card3.png'), to:'NFT3', desc:"311 / 800 Investors Are Still Holding", user: sampleUser3},
+    { id: "1", uri: require('../assets/1.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+    { id: "2", uri: require('../assets/2.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+    { id: "3", uri: require('../assets/3.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
+    { id: "4", uri: require('../assets/4.png'), to:'NFT1', numUsers: 321, user: sampleUser1, dayInvested : 30, totalToken: 150, tokenSpeed : 5},
+    { id: "5", uri: require('../assets/5.png'), to:'NFT2', numUsers: 211, user: sampleUser2, dayInvested : 20, totalToken: 60, tokenSpeed : 3},
+    { id: "6", uri: require('../assets/6.png'), to:'NFT3', numUsers: 311, user: sampleUser3, dayInvested : 10, totalToken: 20, tokenSpeed : 2},
 ]
-
 
 export default ExploreScreen;
