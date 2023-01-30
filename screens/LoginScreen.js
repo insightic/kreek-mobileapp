@@ -4,11 +4,14 @@ import { StatusBar } from "expo-status-bar";
 import { useTheme } from '@react-navigation/native';
 import ProgressBar from '../components/ProgressBar.js'
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
   const { colors } = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigation = useNavigation();
 
   return (
     <View style={[styles.container,{backgroundColor: colors.background}]}>
@@ -34,10 +37,10 @@ const LoginScreen = () => {
       <TouchableOpacity>
         <Text style={[styles.forgot_button, {color:colors.text}]}>Forgot Password?</Text> 
       </TouchableOpacity> 
-      <TouchableOpacity style={styles.loginBtn}>
+      <TouchableOpacity style={styles.loginBtn} onPress={() => navigation.navigate('AppAuth')}>
         <Text style={styles.loginText}>LOGIN</Text> 
       </TouchableOpacity> 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
         <Text style={[styles.forgot_button, {color:colors.text}]}>New here? Register</Text> 
       </TouchableOpacity> 
     </View> 
@@ -76,7 +79,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
       },
       loginBtn: {
-        width: "80%",
+        width: "70%",
         borderRadius: 25,
         height: 50,
         alignItems: "center",
