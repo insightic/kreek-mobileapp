@@ -3,7 +3,7 @@
 import 'react-native-gesture-handler';
 
 // Import React and Component
-import React from 'react';
+import React, {useState} from 'react';
 
 // Import Navigators from React Navigation
 import {NavigationContainer} from '@react-navigation/native';
@@ -15,6 +15,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 //import DrawerNavigationRoutes from './screens/DrawerNavigationRoutes';
 import AppAuth from './AppAuth.js'
+import {darkColor, darkTheme, lightColor, lightTheme} from "./theme/colors";
 
 const Stack = createStackNavigator();
 
@@ -47,8 +48,9 @@ const Auth = () => {
 };
 
 const App = () => {
+    const [isDark, setIsDark] = useState(false);
   return (
-    <NavigationContainer>
+    <NavigationContainer theme = {isDark ? darkTheme: lightTheme}>
       <Stack.Navigator initialRouteName="Auth">
         {/* SplashScreen which will come once for 5 Seconds */}
         {/* <Stack.Screen
@@ -69,7 +71,8 @@ const App = () => {
           component={AppAuth}
           // Hiding header for Navigation Drawer
           options={{headerShown: false}}
-        />
+          // initialParams={this.arguments[0].initialParams}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   );

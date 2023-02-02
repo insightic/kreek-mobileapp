@@ -54,7 +54,7 @@ export default function AppAuth() {
     setIsPanelActive(false);
   };
 
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   const animationConfig = {
     animation: 'spring',
@@ -73,13 +73,13 @@ export default function AppAuth() {
   //   transitionSpec: {
   //     open: animationConfig,
   //     close: TransitionSpecs.TransitionIOSSpec,
-  {/*  },*/}
+  //      },
   //   headerStyleInterpolator: HeaderStyleInterpolators.forFade,
   //   cardStyleInterpolator: ({ current, next, layouts }) => {
   //     return {
-  {/*      cardStyle: {*/}
-  {/*        transform: [*/}
-  {/*          {*/}
+  //       cardStyle: {
+  //         transform: [
+  //           {
   //             translateX: current.progress.interpolate({
   //               inputRange: [0, 1],
   //               outputRange: [layouts.screen.width, 0],
@@ -165,31 +165,31 @@ export default function AppAuth() {
             headerTintColor: "#FFF",
           }}>
             <Stack.Screen name="Home" component={HomeScreen}
-                          options={(props) => ({
-                            headerTitle: null,
-                            headerLeft: () => (
-                                <View style={{flexDirection:'row', marginLeft:20}} >
-                                  <Image
-                                      style={{width: 100, height: 30 , marginLeft:10, fill:'#fff'}}
-                                      //source={{uri:"https://source.unsplash.com/user/c_v_r/100x100"}}
-                                      source={isDark ? require('./assets/kreek_bright_green.png') : require('./assets/kreek_green.png')}
-                                  />
-                                  {/* <Logo width={50} fill={isDark? 'white': 'black'}/> */}
+                  options={(props) => ({
+                    headerTitle: null,
+                    headerLeft: () => (
+                        <View style={{flexDirection:'row', marginLeft:20}} >
+                          <Image
+                              style={{width: 100, height: 30 , marginLeft:10, fill:'#fff'}}
+                              //source={{uri:"https://source.unsplash.com/user/c_v_r/100x100"}}
+                              source={isDark ? require('./assets/kreek_bright_green.png') : require('./assets/kreek_green.png')}
+                          />
+                          {/* <Logo width={50} fill={isDark? 'white': 'black'}/> */}
 
-                                </View>
-                            ),
-                            headerRight: () => (
-                                <Switch value = {isDark} onValueChange = {val => setIsDark(val)}
-                                    // color = {isDark ? darkColor.text : lightColor.text}
-                                />
-                                // <Item
-                                // title="Setting"
-                                // iconName="reorder-three-sharp"
-                                // color = {isDark ? darkColor.text : lightColor.text}
-                                // onPress={() => props.navigation.navigate("Temp")}
-                                // />
-                            ),
-                          })}/>
+                        </View>
+                    ),
+                    headerRight: () => (
+                        <Switch value = {isDark} onValueChange = {val => setIsDark(val)}
+                            // color = {isDark ? darkColor.text : lightColor.text}
+                        />
+                        // <Item
+                        // title="Setting"
+                        // iconName="reorder-three-sharp"
+                        // color = {isDark ? darkColor.text : lightColor.text}
+                        // onPress={() => props.navigation.navigate("Temp")}
+                        // />
+                    ),
+                  })}/>
 
             <Stack.Screen name="User" component={UserScreen} />
             <Stack.Screen name="NFT1" component={NFT1Screen} options={{headerShown:false, ...MyTransition }}/>
@@ -199,7 +199,7 @@ export default function AppAuth() {
             {/* <Stack.Screen name="Temp" component={Temp} /> */}
 
           </Stack.Navigator>
-          // {/*</SharedElement>*/}
+          // </SharedElement>
           // <SwipeablePanel {...panelProps} isActive={isPanelActive}>
           //   <UserScreen />
           // </SwipeablePanel>
